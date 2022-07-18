@@ -1,7 +1,5 @@
-export default function RegisterForm({
+export default function LoginForm({
     handleSubmit,
-    name, 
-    setName, 
     email, 
     setEmail, 
     password, 
@@ -9,16 +7,7 @@ export default function RegisterForm({
 }) {
   return (
     <form onSubmit={handleSubmit} className="mt-3">
-        <div className="form-group my-3">
-            <label className="form-label">Your name</label>
-            <input
-                type="text"
-                className="form-control"
-                placeholder="Enter name"
-                value={name}
-                onChange={(e)=>setName(e.currentTarget.value)}
-            />
-        </div>
+        
         <div className="form-group mb-3">
             <label className="form-label">Email Adress</label>
             <input
@@ -39,7 +28,7 @@ export default function RegisterForm({
                 onChange={(e)=>setPassword(e.currentTarget.value)}
             />
         </div>
-        <button disabled={!name || !email || !password }className="btn btn-primary" type="submit" onClick={handleSubmit}>Submit</button>
+        <button disabled={!email||!password} className="btn btn-primary" type="submit" onClick={handleSubmit}>Submit</button>
     </form>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import {RegisterAction} from "../actions/auth";
 import { toast } from "react-toastify";
 import RegisterForm from "../components/registerForm";
 
@@ -13,9 +13,7 @@ export default function Register(){
         e.preventDefault()
         //console.table({name,email,password})
         try{
-            await axios.post(`${process.env.REACT_APP_API}/register`,{
-                name,email,password
-            })
+            await RegisterAction({name,email,password})
             toast.success("Register Sucess. Please Login")
         } catch(error){
             console.log(`Erro: ${error}`)

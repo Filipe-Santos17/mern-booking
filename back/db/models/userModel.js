@@ -51,6 +51,19 @@ const validate = (user) => {
 	return schema.validate(user);
 };
 
+UserSchema.methods.comparePassword = function(password,next){
+    bycrpt.compare(password, this.password, function(err,match){
+        if(err){
+            console.log("COMPARE PASSWORD ERR", err)
+            return next(err,false)
+        }
+
+        //if no error
+        console.log("MATCH PASSWORD", match)
+        return next(null,match)
+    })
+}
+
 const User = mongodb.model("User", UserSchema)
 
 module.exports = {User, validate}
